@@ -1,0 +1,50 @@
+cinema:
+  customers:
+    - title: Ms.
+      name: Sofia
+    - title: Mrs.
+      name: Isabela
+    - title: Ms.
+      name: Camila
+    - title: Mrs.
+      name: Valentina
+    - title: Ms.
+      name: Valeria
+    - title: Mrs.
+      name: Mariana
+    - title: Mr.
+      name: Santiago
+    - title: Mr.
+      name: Sebastian
+    - title: Mr.
+      name: Matias
+    - title: Mr.
+      name: Mateo
+    - title: Mr.
+      name: Alejandro
+    - title: Mr.
+      name: Diego
+
+    - title:
+      name: Daniela Threepwood
+
+    - title: Ms.
+      name: Gabriela Threepwood
+    - title: Mr.
+      name: Martina Threepwood
+    - title: Mr.
+      name: Samuel Threepwood
+
+    - title:
+      name: Lucia
+    - title:
+      name: Sara
+    - title:
+      name: Emma
+    - title:
+      name: Agustin
+    - title:
+      name: Juan Pablo
+    - title:
+      name: Rodrigo
+
