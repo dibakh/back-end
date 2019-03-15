@@ -18,6 +18,6 @@ class MorseCodeEndpointTest {
 
     @Test
     void postEncodedLetter() {
-        Assertions.assertThat(testRestTemplate.postForObject(url, "a", String.class)).isEqualTo("·−");
+        Assertions.assertThat(testRestTemplate.postForObject("/morse", "A", String.class)).isEqualTo("·−");
     }
 }
