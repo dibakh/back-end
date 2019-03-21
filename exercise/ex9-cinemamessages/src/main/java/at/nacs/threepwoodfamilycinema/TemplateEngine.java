@@ -17,12 +17,12 @@ public class TemplateEngine {
         Map<String, String> templateMessages = messageLoader.getTemplate();
 //        System.out.println("map size: " + templateMessages.size());
 //        boolean condition = templateMessages.containsKey(name);
-        if (name) {
-            String message = templateMessages.get(name);
-            System.out.println(message);
-            String template = message.replace("{name}", name);
-            messageSender.display(template);
-        }
+//        if (name) {
+//            String message = templateMessages.get(name);
+//            System.out.println(message);
+//            String template = message.replace("{name}", name);
+//            messageSender.display(template);
+//        }
 //receives the customer name and
 // returns the right template text with the replaced {name}.
     }
