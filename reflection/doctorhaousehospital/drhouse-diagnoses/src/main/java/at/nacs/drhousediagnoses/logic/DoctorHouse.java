@@ -13,8 +13,8 @@ public class DoctorHouse {
     private final BedsClient bed;
     private final PharmacyClient pharmacy;
 
-    public Patient recognize(Patient patient) {
-        patient.setDiagnosis("Lupus");
+    public Patient getDiagnosis(Patient patient) {
+        patient.setDiagnosis("Incurable disease");
 
         return patient;
     }

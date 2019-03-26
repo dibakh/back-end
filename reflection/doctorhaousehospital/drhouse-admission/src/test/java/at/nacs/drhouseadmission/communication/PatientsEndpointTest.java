@@ -1,14 +1,16 @@
 package at.nacs.drhouseadmission.communication;
 
+import at.nacs.drhouseadmission.logic.DiagnosesClient;
 import at.nacs.drhouseadmission.persistance.Patient;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.web.client.RestTemplate;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -19,17 +21,25 @@ class PatientsEndpointTest {
 
     @MockBean
     RestTemplate restTemplate;
-//    @MockBean
-//    DiagnosesClient diagnosesClient;
+
+    @MockBean
+    DiagnosesClient diagnosesClient;
 
     @Test
     void postPatient() {
-        Patient patient = Patient.builder().name("Omar").symptoms("headache").build();
+        Patient patient = Patient.builder()
+                .name("Omar")
+                .symptoms("headache")
+                .build();
 
-        Patient actual = testRestTemplate.postForObject("/patients", patient, Patient.class);
-        Assertions.assertThat(actual.getName()).isEqualTo("Omar");
+        Mockito.when(diagnosesClient.forward(patient))
+                .thenReturn(patient);
 
-        Assertions.assertThat(actual.getSymptoms()).isEqualTo("headache");
-        Assertions.assertThat(actual.getId()).isNotEmpty();
+        String url = "/patients";
+        Patient actual = testRestTemplate.postForObject(url, patient, Patient.class);
+
+        assertThat(actual.getName()).isEqualTo("Omar");
+        assertThat(actual.getSymptoms()).isEqualTo("headache");
+        assertThat(actual.getId()).isNotEmpty();
     }
 }

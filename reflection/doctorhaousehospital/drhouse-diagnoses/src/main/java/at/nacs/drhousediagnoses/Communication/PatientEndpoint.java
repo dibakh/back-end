@@ -18,8 +18,7 @@ public class PatientEndpoint {
 
     @PostMapping
     public Patient diagnose(@RequestBody Patient patient) {
-         doctorHouse.recognize(patient);
-        return patient;
+        return doctorHouse.getDiagnosis(patient);
     }
 }
 

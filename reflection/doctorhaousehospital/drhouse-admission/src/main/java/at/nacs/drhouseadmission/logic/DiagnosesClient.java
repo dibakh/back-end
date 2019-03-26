@@ -15,7 +15,8 @@ public class DiagnosesClient {
     //    @Value("${patients.server.url}")
     private String url = "http://localhost:9002/patients";
 
-    public void forward(Patient patient) {
+    public Patient forward(Patient patient) {
         restTemplate.postForObject(url, patient, Patient.class);
+        return patient;
     }
 }
