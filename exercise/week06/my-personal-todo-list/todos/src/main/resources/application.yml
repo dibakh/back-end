@@ -1,0 +1,6 @@
+server:
+  url: 9000
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/todos
