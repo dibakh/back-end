@@ -1,46 +1,41 @@
-package at.nacs.todos.Business;
+package at.nacs.todos.communication;
 
+import at.nacs.todos.Business.ToDoManager;
 import at.nacs.todos.persistence.ToDo;
-import at.nacs.todos.persistence.ToDoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping("/todos")
 @RequiredArgsConstructor
 public class ToDoEndpoint {
 
-        private final ToDoRepository repository;
+    private final ToDoManager manager;
 
-        @GetMapping("/todos")
-        List<ToDo> allToDos(){
-             return repository.findAll();
-        }
+    @GetMapping
+    List<ToDo> getAll() {
+        return manager.findAll();
+    }
 
-        @GetMapping("/todos/{id}")
-        ToDo ToDoWithId(@PathVariable String id){
-             return repository.findById(id).orElse(null);
-        }
+    @GetMapping("/{id}")
+    ToDo ToDoWithId(@PathVariable String id) {
+        return manager.find(id).orElse(null);
+    }
 
-        @PostMapping("/todos")
-        ToDo insertNewToDo(@RequestBody ToDo newToDo){
-            return repository.save(newToDo);
-        }
+    @PostMapping
+    ToDo addToDo(@RequestBody ToDo newToDo) {
+        return manager.save(newToDo);
+    }
 
-        @PutMapping("/todos/{id}/done")
-        ToDo putToDo(@PathVariable String id){
-            Optional<ToDo> byId = repository.findById(id);
-            if (byId.isPresent()){
-                repository.save(byId.get()).setDone(true);
-            }
-            return byId.orElse(null);
-        }
+    @PutMapping("/{id}/done")
+    ToDo putToDo(@PathVariable String id) {
+        return manager.markAsDone(id).orElse(null);
+    }
 
-        @DeleteMapping("/todos/{id}")
-        void deleteId(@PathVariable String id){
-            repository.deleteById(id);
-        }
+    @DeleteMapping("/todos/{id}")
+    void deleteId(@PathVariable String id) {
+        manager.delete(id);
+    }
 }
