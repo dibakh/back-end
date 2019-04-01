@@ -1,6 +1,6 @@
 package at.nacs.drhousebeds.communication;
 
-import at.nacs.drhousebeds.logic.Nurse;
+import at.nacs.drhousebeds.logic.CureManager;
 import at.nacs.drhousebeds.persistence.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PatientsEndpoint {
 
-    private final Nurse nurse;
+    private final CureManager manager;
 
     @PostMapping
     public Patient postPatient(@RequestBody Patient patient) {
-        nurse.provideTreatment(patient);
-        return patient;
+        return manager.register(patient);
     }
 }

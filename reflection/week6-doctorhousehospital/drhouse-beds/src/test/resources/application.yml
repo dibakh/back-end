@@ -1,5 +1,6 @@
-cure:
-  common Cold: rest
-  Pneumonia: tablets
-  Astigmatism: glasses
-  lupus: tablets
+patient:
+  cure:
+    common Cold: rest
+    Pneumonia: tablets
+    Astigmatism: glasses
+    lupus: tablets
