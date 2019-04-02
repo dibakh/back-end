@@ -1,5 +1,6 @@
 package at.nacs.secrethandshake.logic;
 
+import at.nacs.secrethandshake.domain.HandshakeMovesLoader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

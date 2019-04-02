@@ -2,7 +2,7 @@ package at.nacs.drhousediagnoses.logic;
 
 import at.nacs.drhousediagnoses.Communication.BedsClient;
 import at.nacs.drhousediagnoses.Communication.PharmacyClient;
-import at.nacs.drhousediagnoses.persistance.Patient;
+import at.nacs.drhousediagnoses.persistence.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,0 +1,12 @@
+server:
+  port: 9000
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/phone_book
+    username: root
+    password: nacs
+  jpa:
+    hibernate:
+      ddl-auto: update
+contacs:
+  url: http://localhost/contacts

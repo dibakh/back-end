@@ -1,0 +1,33 @@
+dataset:
+  tweets:
+    - user: Diba
+      message: first-message
+      likes: 25
+      comments:
+        - super!
+        - good!
+
+#    - id:
+#      user: Hosam
+#      message: second-message
+#      likes: 89
+#      comments:
+#        - great!!!!
+#        - good job!
+#      timestamp:
+#    - id:
+#      user: Diba
+#      message: third-message
+#      likes: 3
+#      comments:
+#        - just shut up!
+#        - :|
+#      timestamp:
+#    - id:
+#      user: Hosam
+#      message: forth--message
+#      likes: 8
+#      comments:
+#        - anything!!!!
+#        - x-x
+#      timestamp:

@@ -1,6 +1,5 @@
 package at.nacs.drhousepharmacy.persistance;
 
-import lombok.Builder;
 import lombok.Data;
 
 

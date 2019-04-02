@@ -1,4 +1,4 @@
-package at.nacs.secrethandshake.logic;
+package at.nacs.secrethandshake.domain;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -2,7 +2,6 @@ package at.nacs.drhousebeds.logic;
 
 import at.nacs.drhousebeds.communication.AccountancyClient;
 import at.nacs.drhousebeds.configuration.BedRepository;
-import at.nacs.drhousebeds.logic.Nurse;
 import at.nacs.drhousebeds.persistence.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

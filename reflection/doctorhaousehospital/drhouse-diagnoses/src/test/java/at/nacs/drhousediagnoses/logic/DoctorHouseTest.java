@@ -1,6 +1,6 @@
 package at.nacs.drhousediagnoses.logic;
 
-import at.nacs.drhousediagnoses.persistance.Patient;
+import at.nacs.drhousediagnoses.persistence.Patient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

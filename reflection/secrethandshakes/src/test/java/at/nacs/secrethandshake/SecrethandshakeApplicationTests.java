@@ -39,9 +39,5 @@ class SecrethandshakeApplicationTests {
         List<String> perform = secrethandshake.perform(8796587);
 
         assertTrue(perform.isEmpty());
-
-
     }
-
-
 }

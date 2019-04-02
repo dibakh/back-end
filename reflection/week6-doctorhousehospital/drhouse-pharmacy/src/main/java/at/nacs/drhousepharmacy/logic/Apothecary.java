@@ -11,11 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 @ConfigurationProperties("patient")
 public class Apothecary {
 
-    private final AccountancyClient client;
 
     @Setter
     @Getter
@@ -24,7 +22,6 @@ public class Apothecary {
     public Patient getMedicine(Patient patient) {
         String medicine = recieveMedicine(patient);
         patient = setMedicine(patient, medicine);
-        client.calculateCosts(patient);
         return patient;
     }
 

@@ -1,6 +1,6 @@
 package at.nacs.drhousepharmacy.Communication;
 
-import at.nacs.drhousepharmacy.logic.Apothecary;
+import at.nacs.drhousepharmacy.logic.PharmacyManager;
 import at.nacs.drhousepharmacy.persistance.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PatientEndpoint {
 
-    private final Apothecary apothecary;
+    private final PharmacyManager manager;
 
     @PostMapping
     public Patient diagnose(@RequestBody Patient patient) {
 
-        return apothecary.getMedicine(patient);
+        return manager.register(patient);
     }
 }

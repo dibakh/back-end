@@ -1,4 +1,4 @@
-package at.nacs.drhousediagnoses.persistance;
+package at.nacs.drhousediagnoses.persistence;
 
 import lombok.Builder;
 import lombok.Data;
