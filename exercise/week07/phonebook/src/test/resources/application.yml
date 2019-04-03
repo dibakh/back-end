@@ -1,3 +1,5 @@
 dataset:
-  client: diba
-  addresse: nbh
+  contact:
+    name: diba
+    address:
+      name: nbh 123

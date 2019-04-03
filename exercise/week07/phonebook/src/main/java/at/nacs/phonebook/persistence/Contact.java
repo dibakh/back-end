@@ -15,9 +15,9 @@ public class Contact {
     private Long id;
 
     @Column(unique = true)
-    private String name; //(unique)
+    private String name;
 
-    @OneToOne(cascade = ALL,fetch = FetchType.EAGER)
+    @OneToOne(cascade = ALL)
     private Address address;
 
 }
