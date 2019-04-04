@@ -1,11 +1,13 @@
 package at.nacs.drhousebeds.logic;
 
 import at.nacs.drhousebeds.persistence.Patient;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.boot.test.context.SpringBootTest.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.*;
@@ -22,5 +24,10 @@ class CureManagerTest {
 
     @Test
     void register() {
+        assertThat(patient.getTreatment()).isNull();
+
+        Patient registeredPatient = manager.register(patient);
+
+        assertThat(registeredPatient.getTreatment()).isNotNull();
     }
 }
