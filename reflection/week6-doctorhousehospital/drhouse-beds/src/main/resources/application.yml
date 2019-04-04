@@ -6,7 +6,6 @@ server:
   port: 9003
 patient:
   url: http://localhost:9005/patients
-  #not sure about accountancy port number
   cure:
     Bursting appendix: operation
     common Cold: Mefenamic Acid
