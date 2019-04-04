@@ -3,4 +3,4 @@ server:
 
 patients:
   server:
-    url: http://www.localhost.com:9002/patients
+    url: http://localhost:9002/patients
