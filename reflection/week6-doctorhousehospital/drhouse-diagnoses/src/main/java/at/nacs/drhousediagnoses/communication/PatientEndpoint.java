@@ -1,4 +1,4 @@
-package at.nacs.drhousediagnoses.Communication;
+package at.nacs.drhousediagnoses.communication;
 
 import at.nacs.drhousediagnoses.logic.DoctorHouse;
 import at.nacs.drhousediagnoses.persistance.Patient;

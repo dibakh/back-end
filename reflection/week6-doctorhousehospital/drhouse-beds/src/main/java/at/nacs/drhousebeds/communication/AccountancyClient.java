@@ -16,7 +16,7 @@ public class AccountancyClient {
     private String url;
 
 
-    public Patient calculateCosts(Patient patient) {
+    public Patient post(Patient patient) {
         restTemplate.postForObject(url + "/patients", patient, Patient.class);
         return patient;
     }

@@ -1,14 +1,14 @@
-server:
-  port: 9004
-spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost/patients
+#server:
+#  port: 9004
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost/patients
 patient:
-  url: http://localhost:9005/patients
+#  url: http://localhost:9005/patients
   medicine:
-    Bursting appendix: operation
-    common Cold: Mefenamic Acid
-    Pneumonia: Macrolide antibiotics
-    lupus: Aspirin
+    x: medicine1
+    y: medicine2
+    z: medicine3
+
 
