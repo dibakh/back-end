@@ -20,3 +20,4 @@ public class PatientsEndpoint {
         return manager.register(patient);
     }
 }
+

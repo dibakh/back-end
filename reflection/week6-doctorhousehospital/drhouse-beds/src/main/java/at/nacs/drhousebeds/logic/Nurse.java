@@ -1,10 +1,7 @@
 package at.nacs.drhousebeds.logic;
 
-import at.nacs.drhousebeds.communication.AccountancyClient;
-import at.nacs.drhousebeds.configuration.BedRepository;
 import at.nacs.drhousebeds.persistence.Patient;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
