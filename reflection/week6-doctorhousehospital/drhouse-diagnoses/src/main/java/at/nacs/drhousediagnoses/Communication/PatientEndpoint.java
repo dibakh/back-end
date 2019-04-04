@@ -21,6 +21,3 @@ public class PatientEndpoint {
         return doctorHouse.getDiagnosis(patient);
     }
 }
-
-//Later on, after all parts of the Doctor House Hospital series are concluded,
-// the Dr House will forward the Patient with his right diagnosis to the Beds or the Pharmacy apps.

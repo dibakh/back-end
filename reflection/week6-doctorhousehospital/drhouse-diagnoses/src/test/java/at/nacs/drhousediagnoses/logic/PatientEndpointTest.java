@@ -1,13 +1,10 @@
 package at.nacs.drhousediagnoses.logic;
 
-import at.nacs.drhousediagnoses.Communication.BedsClient;
 import at.nacs.drhousediagnoses.Communication.PatientEndpoint;
-import at.nacs.drhousediagnoses.Communication.PharmacyClient;
 import at.nacs.drhousediagnoses.persistance.Patient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,11 +19,8 @@ class PatientEndpointTest {
     @Autowired
     PatientEndpoint patient;
 
-    @MockBean
-    BedsClient bedsClient;
 
-    @MockBean
-    PharmacyClient pharmacyClient;
+    //TODO: parameterizedTest
 
     @Test
     void diagnose() {
