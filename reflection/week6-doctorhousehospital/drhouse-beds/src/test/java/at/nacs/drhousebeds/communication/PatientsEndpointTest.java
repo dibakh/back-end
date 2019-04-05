@@ -13,9 +13,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 class PatientsEndpointTest {
 
     @Autowired
-    PatientsEndpoint endpoint;
-
-    @Autowired
     TestRestTemplate restTemplate;
 
     @Autowired

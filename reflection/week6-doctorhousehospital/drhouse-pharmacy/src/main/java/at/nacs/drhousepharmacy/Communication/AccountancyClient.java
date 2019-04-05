@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+
 @RestController
 @RequiredArgsConstructor
 public class AccountancyClient {
@@ -17,7 +18,7 @@ public class AccountancyClient {
 
 
     public Patient calculateCosts(Patient patient) {
-        restTemplate.postForObject(url , patient, Patient.class);
+        restTemplate.postForObject(url, patient, Patient.class);
         return patient;
     }
 }

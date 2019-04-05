@@ -19,7 +19,7 @@ public class PatientEndpoint {
     @PostMapping
     public Patient diagnose(@RequestBody Patient patient) {
 
-        return manager.register(patient);
+            return manager.register(patient);
     }
 }
 

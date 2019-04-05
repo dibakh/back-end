@@ -6,9 +6,15 @@ spring:
       uri: mongodb://localhost/patients
 patient:
   url: http://localhost:9005/patients
-  medicine:
-    Bursting appendix: operation
-    common Cold: Mefenamic Acid
-    Pneumonia: Macrolide antibiotics
+
+apothecary:
+  medicines:
+    BurstingAppendix: operation
+    commonCold: Mefenamic-Acid
+    Pneumonia: Macrolide-antibiotics
     lupus: Aspirin
 
+#  - BurstingAppendix: operation
+#  - commonCold: Mefenamic-Acid
+#  - Pneumonia: Macrolide-antibiotics
+#  - lupus: Aspirin

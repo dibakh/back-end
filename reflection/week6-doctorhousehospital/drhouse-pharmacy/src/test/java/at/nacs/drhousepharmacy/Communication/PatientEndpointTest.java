@@ -1,47 +1,45 @@
 package at.nacs.drhousepharmacy.Communication;
 
+import at.nacs.drhousepharmacy.logic.Apothecary;
+import at.nacs.drhousepharmacy.logic.PharmacyManager;
 import at.nacs.drhousepharmacy.persistance.Patient;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.web.client.RestTemplate;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.boot.test.context.SpringBootTest.*;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class PatientEndpointTest {
 
-    @MockBean
-    RestTemplate restTemplate;
+    @Autowired
+    Patient patient;
 
     @Autowired
-    TestRestTemplate testRestTemplate;
-
-    @Autowired
-    PatientEndpoint endpoint;
+    TestRestTemplate restTemplate;
 
     @MockBean
     AccountancyClient client;
 
+    @MockBean
+    Apothecary apothecary;
+
+    @SpyBean
+    PharmacyManager manager;
+
 
     @Test
     void diagnose() {
-        Patient patient = Patient.builder()
-                .name("patientName")
-                .diagnosis("1")
-                .build();
 
-        assertThat(patient.getMedicine()).isBlank();
+        assertThat(patient.getMedicine()).isNull();
 
-        Patient actual = testRestTemplate.postForObject("/patients", patient, Patient.class);
-        assertThat(actual.getMedicine()).isEqualTo("medicine1");
+        restTemplate.postForObject("/patients", patient, Patient.class);
 
-
+        verify(manager).register(patient);
     }
 }

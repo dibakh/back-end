@@ -16,23 +16,21 @@ class AdmissionTest {
     @Autowired
     Admission admission;
 
+    @Autowired
+    Patient patient;
+
     @MockBean
     DiagnosesClient client;
 
     @Test
     void admit() {
-        Patient patient = Patient.builder()
-                .name("Omar")
-                .symptoms("headache")
-                .build();
-
         Mockito.when(client.forward(patient))
                 .thenReturn(patient);
 
         Patient actual = admission.admit(patient);
 
-        assertThat(actual.getName()).isEqualTo("Omar");
-        assertThat(actual.getSymptoms()).isEqualTo("headache");
+        assertThat(actual.getName()).isEqualTo(patient.getName());
+        assertThat(actual.getSymptoms()).isEqualTo(patient.getSymptoms());
         assertThat(actual.getId()).isNotEmpty();
     }
 }

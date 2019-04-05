@@ -1,23 +1,21 @@
 package at.nacs.drhousepharmacy.logic;
 
 import at.nacs.drhousepharmacy.persistance.Patient;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
 @Service
-@ConfigurationProperties("patient")
+@RequiredArgsConstructor
 public class Apothecary {
 
-
-    @Setter
-    @Getter
-    private Map<String, String> medicines;
+    private final Map<String, String> medicines;
 
     public Patient getMedicine(Patient patient) {
+
+        System.out.println("Apothecary patient:" + patient);
+        System.out.println("Apothecary medicines:" + medicines);
         String medicine = matchMedicine(patient);
         return setMedicine(patient, medicine);
     }

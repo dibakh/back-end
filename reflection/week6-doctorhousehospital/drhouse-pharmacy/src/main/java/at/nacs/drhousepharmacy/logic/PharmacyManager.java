@@ -15,7 +15,9 @@ public class PharmacyManager {
     private final AccountancyClient client;
 
     public Patient register(Patient patient) {
+        System.out.println("1- pharmacy manager: " + patient.toString());
         patient = apothecary.getMedicine(patient);
+        System.out.println("2- got medicine: " + patient.toString());
         repository.save(patient);
         client.calculateCosts(patient);
         return patient;
