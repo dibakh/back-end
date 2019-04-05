@@ -3,10 +3,3 @@ apothecary:
     x: medicine1
     y: medicine2
     z: medicine3
-
-#apothecary:
-#  medicines:
-#    BurstingAppendix: operation
-#    commonCold: Mefenamic-Acid
-#    Pneumonia: Macrolide-antibiotics
-#    lupus: Aspirin

@@ -12,6 +12,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -37,6 +38,8 @@ class PatientEndpointTest {
     void diagnose() {
 
         assertThat(patient.getMedicine()).isNull();
+
+        when(client.calculateCosts(patient)).thenReturn(patient);
 
         restTemplate.postForObject("/patients", patient, Patient.class);
 
