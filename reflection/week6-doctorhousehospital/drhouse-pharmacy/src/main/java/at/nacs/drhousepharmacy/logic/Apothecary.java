@@ -13,9 +13,6 @@ public class Apothecary {
     private final Map<String, String> medicines;
 
     public Patient getMedicine(Patient patient) {
-
-        System.out.println("Apothecary patient:" + patient);
-        System.out.println("Apothecary medicines:" + medicines);
         String medicine = matchMedicine(patient);
         return setMedicine(patient, medicine);
     }

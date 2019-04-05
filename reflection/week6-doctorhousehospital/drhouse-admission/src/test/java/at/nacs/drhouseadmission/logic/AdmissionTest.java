@@ -22,6 +22,8 @@ class AdmissionTest {
     @MockBean
     DiagnosesClient client;
 
+
+
     @Test
     void admit() {
         Mockito.when(client.forward(patient))
