@@ -1,7 +1,6 @@
 package at.nacs.phonebook.logic;
 
-import at.nacs.phonebook.configuration.ContactRepository;
-import at.nacs.phonebook.persistence.Address;
+import at.nacs.phonebook.persistence.ContactRepository;
 import at.nacs.phonebook.persistence.Contact;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
