@@ -1,6 +1,6 @@
 package at.nacs.phonebook.logic;
 
-import at.nacs.phonebook.configuration.ContactRepository;
+import at.nacs.phonebook.persistence.ContactRepository;
 import at.nacs.phonebook.persistence.Contact;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,8 +23,7 @@ public class ContactManager {
 
     public List<Contact> findByAddressNameLike(String address) {
         address = "%" + address + "%";
-        List<Contact> allByAddress = repository.findByAddressNameLike(address);
-        return allByAddress;
+        return repository.findByAddressNameLike(address);
     }
 
 }
