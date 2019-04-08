@@ -1,5 +1,7 @@
-package at.nacs.socialnetwork;
+package at.nacs.socialnetwork.logic;
 
+import at.nacs.socialnetwork.persiistence.Person;
+import at.nacs.socialnetwork.persiistence.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,7 @@ public class PersonManager {
         List<Person> allByFriendsGreaterThan0 = repository.findAllPersonByFriendsNotNull();
         List<Person> peopleWith1Friend = Optional.of(allByFriendsGreaterThan0)
                 .orElse(null);
-        if (allByFriendsGreaterThan0.size()>0){
+        if (allByFriendsGreaterThan0.size() > 0) {
 //            return peopleWith1Friend;
             return repository.saveAll(peopleWith1Friend);
         }
