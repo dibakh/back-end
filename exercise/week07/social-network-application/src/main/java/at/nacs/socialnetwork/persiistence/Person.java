@@ -21,13 +21,11 @@ public class Person {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany(cascade = ALL, fetch = EAGER)
+    @ManyToMany(fetch = EAGER)
     private List<Person> friends;
 
     @Override
     public String toString() {
-        return "Friends: " + name;
+        return "Person: " + name;
     }
-
-
 }

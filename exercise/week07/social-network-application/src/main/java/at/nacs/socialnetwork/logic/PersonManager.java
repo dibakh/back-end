@@ -13,8 +13,8 @@ public class PersonManager {
     private final PersonRepository repository;
 
     public List<Person> findAll() {
-        List<Person> all = repository.findAll();
-        return all;
+        List<Person> allPersons = repository.findAll();
+        return allPersons;
     }
 
     public List<Person> findAllPersonsWithFriend() {
@@ -41,7 +41,7 @@ public class PersonManager {
         repository.save(person);
     }
 
-    public void makeFriend(Long id1, Long id2) {
+    public List<Person> makeFriend(Long id1, Long id2) {
         Person person1 = getPerson(id1);
         Person person2 = getPerson(id2);
 
@@ -52,7 +52,8 @@ public class PersonManager {
         List<Person> person2friends = getFriends(person2);
         person2friends.add(person1);
         repository.save(person2);
-
+        List<Person> all = repository.findAll();
+        return all;
     }
 
     private List<Person> getFriends(Person person) {

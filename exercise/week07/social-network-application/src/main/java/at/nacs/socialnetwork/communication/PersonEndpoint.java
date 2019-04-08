@@ -34,7 +34,7 @@ public class PersonEndpoint {
     }
 
     @PutMapping("/{id1}/friend/{id2}")
-    void friend(@PathVariable Long id1, @PathVariable Long id2){
+    void makeFriends(@PathVariable Long id1, @PathVariable Long id2){
         manager.makeFriend(id1, id2);
     }
 
