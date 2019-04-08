@@ -1,5 +1,7 @@
-package at.nacs.socialnetwork;
+package at.nacs.socialnetwork.communication;
 
+import at.nacs.socialnetwork.logic.PersonManager;
+import at.nacs.socialnetwork.persiistence.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

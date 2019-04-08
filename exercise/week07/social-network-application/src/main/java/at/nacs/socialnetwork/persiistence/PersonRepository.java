@@ -1,5 +1,6 @@
-package at.nacs.socialnetwork;
+package at.nacs.socialnetwork.persiistence;
 
+import at.nacs.socialnetwork.persiistence.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
