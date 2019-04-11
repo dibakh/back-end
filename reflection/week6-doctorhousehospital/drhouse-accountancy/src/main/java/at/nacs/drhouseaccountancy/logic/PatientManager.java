@@ -6,6 +6,8 @@ import at.nacs.drhouseaccountancy.persistance.PatientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -13,10 +15,11 @@ public class PatientManager {
 
   private final PatientRepository repository;
 
+  // save patient
   public void save(PatientDTO patientDTO) {
-    // save patient
+
     Long patientId = Long.valueOf(patientDTO.getId());
-    Patient patient = repository.findAllById(patientId);
-    repository.save(patient);
+    Optional<Patient> patient = repository.findById(patientId);
+    repository.save(patient.get());
   }
 }

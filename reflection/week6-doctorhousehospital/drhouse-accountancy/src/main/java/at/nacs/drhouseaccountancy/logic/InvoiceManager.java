@@ -1,6 +1,7 @@
 package at.nacs.drhouseaccountancy.logic;
 
 import at.nacs.drhouseaccountancy.Domain.Invoice;
+import at.nacs.drhouseaccountancy.Domain.Kind;
 import at.nacs.drhouseaccountancy.Domain.Patient;
 import at.nacs.drhouseaccountancy.dto.PatientDTO;
 import at.nacs.drhouseaccountancy.persistance.InvoiceRepository;
@@ -14,22 +15,40 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class InvoiceManager {
+
   private final InvoiceRepository invoiceRepository;
-  private  final PatientRepository patientRepository;
+  private final PatientRepository patientRepository;
+
+  private final Kind kind;
+  private final Patient patient;
+
   public List<Invoice> findAll() {
 
     return invoiceRepository.findAll();
   }
 
   public int calculateCosts(PatientDTO patientDTO) {
+    Long patientId = Long.valueOf(patientDTO.getId());
+    Invoice invoice = invoiceRepository.getOne(patientId);
+    Kind kind = invoice.getKind();
     int price = 0;
+    switch (kind) {
+      case MEDICINE:
+        price = 200;
+        break;
+      case TREATMENT:
+        price = 400;
+    }
     return price;
   }
 
   public Patient save(PatientDTO patientDTO, double price) {
     Long id = Long.valueOf(patientDTO.getId());
     Optional<Invoice> patientInvoice = invoiceRepository.findById(id);
-//    Invoice invoice = patientInvoice.orElseThrow(patientInvoice.get().setCost(price));
+    Invoice invoice = patientInvoice.get();
+    invoice.setCost(price);
+    invoiceRepository.save(invoice);
+
     Optional<Patient> patient = patientRepository.findById(id);
     return patient.get();
   }
