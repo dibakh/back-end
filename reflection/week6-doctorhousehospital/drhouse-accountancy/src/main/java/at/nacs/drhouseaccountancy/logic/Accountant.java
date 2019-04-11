@@ -1,17 +1,32 @@
 package at.nacs.drhouseaccountancy.logic;
 
-import at.nacs.drhouseaccountancy.persistance.PatientDTO;
+import at.nacs.drhouseaccountancy.Domain.Invoice;
+import at.nacs.drhouseaccountancy.Domain.Patient;
+import at.nacs.drhouseaccountancy.dto.PatientDTO;
+import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
+@RequiredArgsConstructor
 public class Accountant {
-    public PatientDTO generateInvoice(PatientDTO patientDTO) {
-        //store the patient UUID
-                //update if it already exist
 
-        // calculate cost of treatment or medicine
+  private final PatientManager patientManager;
+  private final InvoiceManager invoiceManager;
 
-        // create an Invoice and store in DB
+  public Patient register(PatientDTO patientDTO) {
+    patientManager.save(patientDTO);
 
+    Integer price = invoiceManager.calculateCosts(patientDTO);
 
-        return patientDTO;
-    }
+    Patient patient = invoiceManager.save(patientDTO, price);
+    return patient;
+  }
+
+  public List<Invoice> getAll() {
+    return invoiceManager.findAll();
+  }
+
+  public void setPaid(Long id) {
+    invoiceManager.update(id);
+  }
 }

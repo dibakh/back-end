@@ -1,0 +1,10 @@
+server:
+  port: 9005
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/doctor_house_hospital?useSSL=false
+    username: dbuser
+    password: nacs
+  jpa:
+    hibernate:
+      ddl-auto: update
