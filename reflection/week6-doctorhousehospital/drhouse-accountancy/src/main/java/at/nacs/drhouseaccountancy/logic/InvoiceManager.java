@@ -19,9 +19,6 @@ public class InvoiceManager {
   private final InvoiceRepository invoiceRepository;
   private final PatientRepository patientRepository;
 
-  private final Kind kind;
-  private final Patient patient;
-
   public List<Invoice> findAll() {
 
     return invoiceRepository.findAll();
