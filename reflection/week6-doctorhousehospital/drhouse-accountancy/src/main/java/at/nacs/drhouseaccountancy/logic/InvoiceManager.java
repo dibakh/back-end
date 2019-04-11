@@ -31,9 +31,9 @@ public class InvoiceManager {
     int price = 0;
     switch (kind) {
       case MEDICINE:
-        price = 200;
+        price = 200; // it should have been read from yml file
         break;
-      case TREATMENT:
+      case TREATMENT: // it should have been read from yml file
         price = 400;
     }
     return price;
