@@ -51,7 +51,8 @@ public class InvoiceManager {
   }
 
   public void update(Long id) {
-    Optional<Invoice> patientInvoice = invoiceRepository.findById(id);
-    patientInvoice.get().setPaid(true);
+    Invoice invoice = invoiceRepository.findById(id).orElse(null);
+    invoice.setPaid(true);
+    invoiceRepository.save(invoice);
   }
 }

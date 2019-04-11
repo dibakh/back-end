@@ -1,6 +1,9 @@
 package at.nacs.drhouseaccountancy.Domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -11,6 +14,9 @@ import java.time.LocalDateTime;
 import static javax.persistence.EnumType.STRING;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Invoice {
 
   @Id
