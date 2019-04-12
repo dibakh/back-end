@@ -7,36 +7,50 @@ import at.nacs.drhouseaccountancy.dto.PatientDTO;
 import at.nacs.drhouseaccountancy.persistance.InvoiceRepository;
 import at.nacs.drhouseaccountancy.persistance.PatientRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@ConfigurationProperties("price")
 public class InvoiceManager {
 
   private final InvoiceRepository invoiceRepository;
   private final PatientRepository patientRepository;
+
+  private final Map<String, Double> treathment;
+  private final Map<String, Double> medicine;
 
   public List<Invoice> findAll() {
 
     return invoiceRepository.findAll();
   }
 
-  public int calculateCosts(PatientDTO patientDTO) {
-    Long patientId = Long.valueOf(patientDTO.getId());
-    Invoice invoice = invoiceRepository.getOne(patientId);
+  public Double calculateCosts(PatientDTO patientDTO) {
+
+    Double price = 0.0; // not proud of initilize price here
+
+    Invoice invoice = getInvoice(patientDTO);
+    String providedTreatment = patientDTO.getTreatment();
     Kind kind = invoice.getKind();
-    int price = 0;
+
     switch (kind) {
       case MEDICINE:
-        price = 200; // it should have been read from yml file
+        price = medicine.get(providedTreatment);
         break;
-      case TREATMENT: // it should have been read from yml file
-        price = 400;
+      case TREATMENT:
+        price = treathment.get(providedTreatment);
     }
     return price;
+  }
+
+  private Invoice getInvoice(PatientDTO patientDTO) {
+    Long patientId = Long.valueOf(patientDTO.getId());
+    return invoiceRepository.getOne(patientId);
   }
 
   public Patient save(PatientDTO patientDTO, double price) {

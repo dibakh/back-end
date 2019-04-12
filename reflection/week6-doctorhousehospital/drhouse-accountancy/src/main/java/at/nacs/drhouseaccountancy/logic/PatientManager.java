@@ -21,7 +21,7 @@ public class PatientManager {
   private final InvoiceRepository invoiceRepository;
 
   private final PatientDTO patientDTO;
-//  private final Invoice invoice;
+  //  private final Invoice invoice;
   private Kind kind;
 
   public void save(PatientDTO patientDTO) {
@@ -36,15 +36,15 @@ public class PatientManager {
 
   private void generateInvoice(PatientDTO patientDTO, Patient patient) {
     Invoice invoice = Invoice.builder()
-                           .patient(patient)
-                           .symptoms(patientDTO.getSymptoms())
-                           .diagnosis(patientDTO.getDiagnosis())
-                           .kind(getKindOfInvoice())
-                           .provided(getProvided())
-                           .cost(calculatesCosts())
-                           .paid(false) // it not paid yet
-                           .timestamp(LocalDateTime.now())
-                           .build();
+                             .patient(patient)
+                             .symptoms(patientDTO.getSymptoms())
+                             .diagnosis(patientDTO.getDiagnosis())
+                             .kind(getKindOfInvoice())
+                             .provided(getProvided())
+                             .cost(calculatesCosts())
+                             .paid(false) // it not paid yet
+                             .timestamp(LocalDateTime.now())
+                             .build();
 
     invoiceRepository.save(invoice);
   }
@@ -64,12 +64,8 @@ public class PatientManager {
   }
 
   private String getProvided() {
-    switch (kind) {
-      case MEDICINE:
-        return "MEDICINE";
-      case TREATMENT:
-        return "TREATMENT";
-    }
-    return "Not founded!";
+    return "";
   }
+
+
 }

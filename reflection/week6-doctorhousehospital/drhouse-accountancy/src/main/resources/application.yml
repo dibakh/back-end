@@ -8,3 +8,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+
+price:
+  treathment:
+    x1: 500
+    x2: 300
+  medicine:
+    y1: 600
+    y2: 500
