@@ -32,7 +32,7 @@ public class InvoiceManager {
 
   public Double calculateCosts(PatientDTO patientDTO) {
 
-    Double price = 0.0; // not proud of initilize price here
+    Double price = 0.0;
 
     Invoice invoice = getInvoice(patientDTO);
     String providedTreatment = patientDTO.getTreatment();

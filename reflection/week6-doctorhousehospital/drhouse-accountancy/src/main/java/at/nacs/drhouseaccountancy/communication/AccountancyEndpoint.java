@@ -32,3 +32,5 @@ public class AccountancyEndpoint {
   }
 
 }
+
+// L : can I transfer Data from Endpoint to differente managers?

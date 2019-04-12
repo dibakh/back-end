@@ -27,7 +27,7 @@ public class PatientManager {
   public void save(PatientDTO patientDTO) {
 
     Long patientId = Long.valueOf(patientDTO.getId());
-    Optional<Patient> patient = patientRepository.findById(patientId);
+    Optional<Patient> patient = patientRepository.findByUuid(patientId);
     if (patient.isPresent()) {
       generateInvoice(patientDTO, patient.get());
     }
@@ -42,7 +42,7 @@ public class PatientManager {
                              .kind(getKindOfInvoice())
                              .provided(getProvided())
                              .cost(calculatesCosts())
-                             .paid(false) // it not paid yet
+                             .paid(false)
                              .timestamp(LocalDateTime.now())
                              .build();
 
@@ -50,7 +50,7 @@ public class PatientManager {
   }
 
   private double calculatesCosts() {
-    // should read from yml file
+    // data from yml file
     return 0;
   }
 
@@ -64,7 +64,7 @@ public class PatientManager {
   }
 
   private String getProvided() {
-    return "";
+    return null;
   }
 
 

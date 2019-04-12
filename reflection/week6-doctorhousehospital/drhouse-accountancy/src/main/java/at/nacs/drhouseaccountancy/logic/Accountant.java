@@ -14,11 +14,13 @@ public class Accountant {
   private final InvoiceManager invoiceManager;
 
   public Patient register(PatientDTO patientDTO) {
+
     patientManager.save(patientDTO);
 
-    Integer price = invoiceManager.calculateCosts(patientDTO);
-
+    Double price = invoiceManager.calculateCosts(patientDTO);
     Patient patient = invoiceManager.save(patientDTO, price);
+    invoiceManager.save(patientDTO, price);
+
     return patient;
   }
 
@@ -30,3 +32,6 @@ public class Accountant {
     invoiceManager.update(id);
   }
 }
+
+
+// L : is that wrong to manage ( up to down programmin ) all details here?
