@@ -1,6 +1,5 @@
 package at.nacs.drhouseaccountancy.communication;
 
-import at.nacs.drhouseaccountancy.Domain.Patient;
 import at.nacs.drhouseaccountancy.dto.PatientDTO;
 import at.nacs.drhouseaccountancy.logic.Accountant;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class PatientEndpoint {
 
   @PostMapping
   PatientDTO post(@RequestBody PatientDTO patientDTO) {
-    accountant.register(patientDTO);
+    accountant.invoice(patientDTO);
     return patientDTO;
 
   }
