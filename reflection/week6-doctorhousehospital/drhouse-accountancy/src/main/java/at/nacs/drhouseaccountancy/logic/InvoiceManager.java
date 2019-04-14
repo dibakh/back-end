@@ -20,14 +20,27 @@ import java.util.Optional;
 public class InvoiceManager {
 
   private final InvoiceRepository invoiceRepository;
-  private final PatientRepository patientRepository;
-
-  private final Map<String, Double> treathment;
-  private final Map<String, Double> medicine;
 
   public List<Invoice> findAll() {
 
     return invoiceRepository.findAll();
+  }
+
+  public Patient save(Invoice patientDTO) {
+    Long id = Long.valueOf(patientDTO.getId());
+    Optional<Invoice> patientInvoice = invoiceRepository.findById(id);
+    Invoice invoice = patientInvoice.get();
+    invoice.setCost(price);
+    invoiceRepository.save(invoice);
+
+    Optional<Patient> patient = patientRepository.findById(id);
+    return patient.get();
+  }
+
+  public void update(Long id) {
+    Invoice invoice = invoiceRepository.findById(id).orElse(null);
+    invoice.setPaid(true);
+    invoiceRepository.save(invoice);
   }
 
   public Double calculateCosts(PatientDTO patientDTO) {
@@ -51,22 +64,5 @@ public class InvoiceManager {
   private Invoice getInvoice(PatientDTO patientDTO) {
     Long patientId = Long.valueOf(patientDTO.getId());
     return invoiceRepository.getOne(patientId);
-  }
-
-  public Patient save(PatientDTO patientDTO, double price) {
-    Long id = Long.valueOf(patientDTO.getId());
-    Optional<Invoice> patientInvoice = invoiceRepository.findById(id);
-    Invoice invoice = patientInvoice.get();
-    invoice.setCost(price);
-    invoiceRepository.save(invoice);
-
-    Optional<Patient> patient = patientRepository.findById(id);
-    return patient.get();
-  }
-
-  public void update(Long id) {
-    Invoice invoice = invoiceRepository.findById(id).orElse(null);
-    invoice.setPaid(true);
-    invoiceRepository.save(invoice);
   }
 }
