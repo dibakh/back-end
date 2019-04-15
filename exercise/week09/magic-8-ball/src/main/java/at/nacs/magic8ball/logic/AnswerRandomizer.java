@@ -8,13 +8,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MessageRandomizer {
+public class AnswerRandomizer {
 
-  private final List<String> messages;
+  private final List<String> answers;
 
-  public String getMessage() {
-    Collections.shuffle(messages);
-    return messages.get(0);
+  public String getAnswer() {
+    Collections.shuffle(answers);
+    return answers.get(0);
 
   }
 }
