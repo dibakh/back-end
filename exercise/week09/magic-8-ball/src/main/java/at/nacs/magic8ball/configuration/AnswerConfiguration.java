@@ -9,16 +9,16 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-@ConfigurationProperties("magic8ball")
-public class MessageConfiguration {
+@ConfigurationProperties("dataset")
+public class AnswerConfiguration {
 
   @Getter
   @Setter
-  List<String> messages;
+  List<String> answers;
 
   @Bean
-  public List<String> messages() {
-    return messages;
+  public List<String> answers() {
+    return answers;
   }
 }
 
