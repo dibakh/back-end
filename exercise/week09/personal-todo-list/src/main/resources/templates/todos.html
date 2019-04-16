@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>---- My ToDo List ----</title>
+
+    <meta charset="UTF-8"/>
+
+    <link media="all" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+
+</head>
+<body>
+
+<h1><b>Your ToDOs </b></h1>
+
+<table border="1" style="margin: 5mm">
+    <tr>
+        <th>Title</th>
+        <th>Done</th>
+    </tr>
+    <tr th:each="todo : ${todos}">
+        <td th:text="${todo.title}">Name</td>
+        <!--<td>-->
+        <!--<form method="post" th:action="@{/}">-->
+        <!--<input name="id" th:value="${todo.id}" type="button"/>-->
+        <!--<button type="submit">Delete!</button>-->
+        <!--&lt;!&ndash;<input type="checkbox" name="todo" value="done">&ndash;&gt;-->
+        <!--</form>-->
+        <!--</td>-->
+        <td>
+            <form method="post" th:action="@{/done}">
+                <input name="id" th:value="${todo.id}" type="checkbox"/>
+                <button type="submit">Done!</button>
+                <!--<input type="checkbox" name="todo" value="done">-->
+            </form>
+        </td>
+    </tr>
+</table>
+
+<h2>Add new ToDo</h2>
+<form method="post" th:action="@{/}" th:object="${todo}">
+    <label>title: </label>
+    <input th:field="*{title}" type="text"/>
+    <p th:errors="*{title}" th:if="${#fields.hasErrors('title')}">Incorrect input</p>
+    <br/>
+    <button type="submit">Add</button>
+</form>
+
+
+</body>
+</html>
