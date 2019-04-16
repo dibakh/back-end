@@ -16,7 +16,7 @@ public class InvoiceEndpoint {
 
   @GetMapping
   List<Invoice> getAll() {
-    return manager.findAll();
+    return manager.getAll();
   }
 
   @PutMapping("/{id}/paid")
