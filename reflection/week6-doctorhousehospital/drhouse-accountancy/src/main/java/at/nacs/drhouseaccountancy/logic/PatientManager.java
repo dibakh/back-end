@@ -1,7 +1,7 @@
 package at.nacs.drhouseaccountancy.logic;
 
 import at.nacs.drhouseaccountancy.Domain.Patient;
-import at.nacs.drhouseaccountancy.dto.PatientDTO;
+import at.nacs.drhouseaccountancy.communication.dto.PatientDTO;
 import at.nacs.drhouseaccountancy.persistance.PatientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,26 +15,31 @@ public class PatientManager {
 
   private final PatientRepository patientRepository;
 
+  public void saveOrUpdate(PatientDTO patientDTO) {
 
-  public Patient saveOrUpdate(PatientDTO patientDTO) {
+    Optional<Patient> patient = getPatient(patientDTO);
 
-    Long patientId = Long.valueOf(patientDTO.getId());
-    Optional<Patient> patient = patientRepository.findByUuid(patientId);  // or finbByUuid
-    if (patient.isPresent()) {
-      return patient.get();
+    if (!patient.isPresent()) {
+      saveNotExistedPatient(patientDTO);
     }
-    Patient newPatient = getPatient(patientDTO);
-    patientRepository.save(newPatient);
+  }
 
+  private Optional<Patient> getPatient(PatientDTO patientDTO) {
+    // getUuid??? getId?????
+    Long patientId = Long.valueOf(patientDTO.getId());
+    return patientRepository.findByUuid(patientId);
+  }
+
+  private Patient saveNotExistedPatient(PatientDTO patientDTO) {
+    Patient newPatient = getNewPatient(patientDTO);
+    patientRepository.save(newPatient);
     return newPatient;
   }
 
-  Patient getPatient(PatientDTO patientDTO) {
+  Patient getNewPatient(PatientDTO patientDTO) {
     return Patient.builder()
                   .uuid(patientDTO.getId())
                   .name(patientDTO.getName())
                   .build();
   }
-
-
 }
