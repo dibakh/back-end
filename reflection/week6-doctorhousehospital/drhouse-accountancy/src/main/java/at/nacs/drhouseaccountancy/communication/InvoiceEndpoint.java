@@ -16,14 +16,12 @@ public class InvoiceEndpoint {
 
   @GetMapping
   List<Invoice> getAll() {
-
     return manager.findAll();
   }
 
   @PutMapping("/{id}/paid")
   void paidInvoice(@PathVariable Long id) {
-
-    manager.update(id);
+    manager.markAsPaidInvoice(id);
   }
 }
 
