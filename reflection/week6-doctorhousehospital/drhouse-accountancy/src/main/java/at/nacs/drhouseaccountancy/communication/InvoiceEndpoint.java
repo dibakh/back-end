@@ -1,6 +1,6 @@
 package at.nacs.drhouseaccountancy.communication;
 
-import at.nacs.drhouseaccountancy.Domain.Invoice;
+import at.nacs.drhouseaccountancy.domain.Invoice;
 import at.nacs.drhouseaccountancy.logic.InvoiceManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package at.nacs.drhouseaccountancy.persistance;
 
-import at.nacs.drhouseaccountancy.Domain.Patient;
+import at.nacs.drhouseaccountancy.domain.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

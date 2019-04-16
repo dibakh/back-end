@@ -1,6 +1,6 @@
 package at.nacs.drhouseaccountancy.logic;
 
-import at.nacs.drhouseaccountancy.Domain.Invoice;
+import at.nacs.drhouseaccountancy.domain.Invoice;
 import at.nacs.drhouseaccountancy.persistance.InvoiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

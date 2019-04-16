@@ -1,6 +1,6 @@
 package at.nacs.drhouseaccountancy.logic;
 
-import at.nacs.drhouseaccountancy.Domain.Patient;
+import at.nacs.drhouseaccountancy.domain.Patient;
 import at.nacs.drhouseaccountancy.communication.dto.PatientDTO;
 import at.nacs.drhouseaccountancy.persistance.PatientRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package at.nacs.drhouseaccountancy.Domain;
+package at.nacs.drhouseaccountancy.domain;
 
 public enum Kind {
 

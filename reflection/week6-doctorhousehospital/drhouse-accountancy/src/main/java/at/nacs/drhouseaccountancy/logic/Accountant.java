@@ -1,7 +1,6 @@
 package at.nacs.drhouseaccountancy.logic;
 
-import at.nacs.drhouseaccountancy.Domain.Invoice;
-import at.nacs.drhouseaccountancy.Domain.Patient;
+import at.nacs.drhouseaccountancy.domain.Invoice;
 import at.nacs.drhouseaccountancy.communication.dto.PatientDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
