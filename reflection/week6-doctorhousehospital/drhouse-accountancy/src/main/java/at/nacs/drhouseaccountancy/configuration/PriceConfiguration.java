@@ -17,8 +17,17 @@ public class PriceConfiguration {
   Map<String,Double> treatment;
 
   @Bean
-  Map<String,Double> getPrices(){
+  Map<String,Double> treatmentPrices(){
     return treatment;
+  }
+
+  @Getter
+  @Setter
+  Map<String,Double> medicine;
+
+  @Bean
+  Map<String,Double> medicinePrices(){
+    return medicine;
   }
 
 
