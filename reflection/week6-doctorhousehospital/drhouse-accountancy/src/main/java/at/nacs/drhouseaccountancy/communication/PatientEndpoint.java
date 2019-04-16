@@ -1,6 +1,6 @@
 package at.nacs.drhouseaccountancy.communication;
 
-import at.nacs.drhouseaccountancy.dto.PatientDTO;
+import at.nacs.drhouseaccountancy.communication.dto.PatientDTO;
 import at.nacs.drhouseaccountancy.logic.Accountant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
