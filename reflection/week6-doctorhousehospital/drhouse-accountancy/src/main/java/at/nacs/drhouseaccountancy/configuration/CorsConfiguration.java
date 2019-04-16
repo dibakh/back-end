@@ -1,4 +1,4 @@
-package at.nacs.drhouseaccountancy.Configuration;
+package at.nacs.drhouseaccountancy.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
