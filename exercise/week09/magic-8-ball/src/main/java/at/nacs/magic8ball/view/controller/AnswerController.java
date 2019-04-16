@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 @RequiredArgsConstructor
-public class Show8BallAnswers {
+public class AnswerController {
 
   private final AnswerRandomizer answerRandomizer;
 
