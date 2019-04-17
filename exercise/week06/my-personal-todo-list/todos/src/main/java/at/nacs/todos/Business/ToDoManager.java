@@ -12,38 +12,38 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ToDoManager {
 
-    private final ToDoRepository repository;
+  private final ToDoRepository repository;
 
-    public List<ToDo> findAll() {
-        return repository.findAll();
+  public List<ToDo> findAll() {
+    return repository.findAll();
+  }
+
+  public Optional<ToDo> find(String id) {
+    return repository.findById(id);
+  }
+
+  public ToDo save(ToDo newToDo) {
+    return repository.save(newToDo);
+  }
+
+  public Optional<ToDo> markAsDone(String id) {
+    Optional<ToDo> toDo = find(id);
+    if (!toDo.isPresent()) {
+      return Optional.empty();
     }
 
-    public Optional<ToDo> find(String id) {
-        return repository.findById(id);
-    }
+    ToDo currentToDo = toDo.get();
+    currentToDo.setDone(true);
+    repository.save(currentToDo);
 
-    public ToDo save(ToDo newToDo) {
-        return repository.save(newToDo);
-    }
+    return Optional.of(currentToDo);
+  }
 
-    public Optional<ToDo> markAsDone(String id) {
-        Optional<ToDo> toDo = find(id);
-        if (!toDo.isPresent()) {
-            return Optional.empty();
-        }
+  public void delete(String id) {
+    repository.deleteById(id);
+  }
 
-        ToDo currentToDo = toDo.get();
-        currentToDo.setDone(true);
-        repository.save(currentToDo);
-
-        return Optional.of(currentToDo);
-    }
-
-    public void delete(String id) {
-        repository.deleteById(id);
-    }
-
-    public void deleteAll() {
-        repository.deleteAll();
-    }
+  public void deleteAll() {
+    repository.deleteAll();
+  }
 }

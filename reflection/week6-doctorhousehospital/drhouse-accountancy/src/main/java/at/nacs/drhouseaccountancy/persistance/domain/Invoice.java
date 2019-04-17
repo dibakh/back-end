@@ -1,4 +1,4 @@
-package at.nacs.drhouseaccountancy.domain;
+package at.nacs.drhouseaccountancy.persistance.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +22,6 @@ public class Invoice {
   @Id
   @GeneratedValue
   private Long id;
-
 
   @ManyToOne
   private Patient patient;

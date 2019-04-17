@@ -16,78 +16,78 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(webEnvironment = NONE)
 class ToDoManagerTest {
 
-    @Autowired
-    ToDoManager manager;
+  @Autowired
+  ToDoManager manager;
 
-    ToDo toDo;
+  ToDo toDo;
 
-    @BeforeEach
-    void beforre() {
-        manager.deleteAll();
+  @BeforeEach
+  void beforre() {
+    manager.deleteAll();
 
-        toDo = ToDo.builder()
-                .title("Do test!")
-                .build();
-    }
+    toDo = ToDo.builder()
+               .title("Do test!")
+               .build();
+  }
 
-    @Test
-    void findAll() {
-        List<ToDo> toDos = manager.findAll();
-        Assertions.assertThat(toDos).isEmpty();
-    }
+  @Test
+  void findAll() {
+    List<ToDo> toDos = manager.findAll();
+    Assertions.assertThat(toDos).isEmpty();
+  }
 
-    @Test
-    void find() {
-        manager.save(toDo);
+  @Test
+  void find() {
+    manager.save(toDo);
 
-        String id = toDo.getId();
-        Optional<ToDo> actual = manager.find(id);
+    String id = toDo.getId();
+    Optional<ToDo> actual = manager.find(id);
 
-        actual.ifPresent(e -> assertThat(e).isEqualTo(toDo));
+    actual.ifPresent(e -> assertThat(e).isEqualTo(toDo));
 
-    }
+  }
 
-    @Test
-    void save() {
-        manager.save(toDo);
+  @Test
+  void save() {
+    manager.save(toDo);
 
-        String id = toDo.getId();
-        Optional<ToDo> actual = manager.find(id);
-        actual.ifPresent(e -> assertThat(e).isEqualTo(toDo));
+    String id = toDo.getId();
+    Optional<ToDo> actual = manager.find(id);
+    actual.ifPresent(e -> assertThat(e).isEqualTo(toDo));
 
-    }
+  }
 
-    @Test
-    void markAsDone() {
-        manager.save(toDo);
-        String id = toDo.getId();
-        manager.markAsDone(id);
+  @Test
+  void markAsDone() {
+    manager.save(toDo);
+    String id = toDo.getId();
+    manager.markAsDone(id);
 
-        Optional<ToDo> toDo = manager.find(id);
-        assertThat(toDo.get().isDone()).isTrue();
+    Optional<ToDo> toDo = manager.find(id);
+    assertThat(toDo.get().isDone()).isTrue();
 
 
-    }
+  }
 
-    @Test
-    void delete() {
-        manager.save(toDo);
-        String id = toDo.getId();
-        assertThat(toDo.getId()).isNotBlank();
+  @Test
+  void delete() {
+    manager.save(toDo);
+    String id = toDo.getId();
+    assertThat(toDo.getId()).isNotBlank();
 
-        manager.delete(id);
+    manager.delete(id);
 
-        Optional<ToDo> actual = manager.find(id);
-        assertThat(actual.isPresent()).isFalse();
-    }
+    Optional<ToDo> actual = manager.find(id);
+    assertThat(actual.isPresent()).isFalse();
+  }
 
-    @Test
-    void deleteAll() {
-        manager.save(toDo);
+  @Test
+  void deleteAll() {
+    manager.save(toDo);
 
-        manager.deleteAll();
+    manager.deleteAll();
 
-        List<ToDo> actual = manager.findAll();
-        assertThat(actual.size()).isZero();
-    }
+    List<ToDo> actual = manager.findAll();
+    assertThat(actual.size()).isZero();
+  }
 }

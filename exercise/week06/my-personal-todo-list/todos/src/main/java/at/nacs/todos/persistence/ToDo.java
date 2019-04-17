@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ToDo {
-    private String id;
-    private String title;
-    private boolean done;
+  private String id;
+  private String title;
+  private boolean done;
 
 }
