@@ -14,19 +14,18 @@ public class PriceConfiguration {
 
   @Getter
   @Setter
-  Map<String,Double> treatment;
+  Map<String, Double> treatment;
+  @Getter
+  @Setter
+  Map<String, Double> medicine;
 
   @Bean
-  Map<String,Double> treatmentPrices(){
+  Map<String, Double> treatmentPrices() {
     return treatment;
   }
 
-  @Getter
-  @Setter
-  Map<String,Double> medicine;
-
   @Bean
-  Map<String,Double> medicinePrices(){
+  Map<String, Double> medicinePrices() {
     return medicine;
   }
 
