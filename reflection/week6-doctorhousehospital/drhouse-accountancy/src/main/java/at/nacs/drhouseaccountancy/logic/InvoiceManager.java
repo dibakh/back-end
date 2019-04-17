@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +23,12 @@ public class InvoiceManager {
   }
 
   public void markAsPaidInvoice(Long id) {
-    Invoice invoice = repository.findById(id).orElse(null);
+    Optional<Invoice> patientInvoice = repository.findById(id);
+    if (!patientInvoice.isPresent()) {
+      // how tell user that id is not valid?
+
+    }
+    Invoice invoice = patientInvoice.get();
     invoice.setPaid(true);
     repository.save(invoice);
   }
