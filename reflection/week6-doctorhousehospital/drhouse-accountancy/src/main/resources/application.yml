@@ -11,7 +11,7 @@ spring:
 
 
 price:
-  treathment:
+  treatment:
     x1: 500
     x2: 300
   medicine:
