@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>---- My ToDo List ----</title>
+
+    <meta charset="UTF-8"/>
+
+    <link media="all" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+
+</head>
+<body>
+
+<h1><b>Patients Invoices </b></h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Done</th>
+    </tr>
+    <tr th:each="invoice : ${invoices}">
+        <td th:text="${invoice.patient}">Name</td>
+        <td>
+            <form method="post" th:action="@{/{id}/paid}">
+                <input name="id" th:value="${paid}" type="hidden"/>
+                <p th:errors="*{id}" th:if="${#fields.hasErrors('id')}">Incorrect input</p>
+
+                <button type="submit">Done!</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+
+
+</body>
+</html>
