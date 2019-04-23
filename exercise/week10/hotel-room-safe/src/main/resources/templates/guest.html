@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Information</title>
+</head>
+<body>
+<h1>the belongings of the customer of that room</h1>
+<p>
+<ul>
+    <li>FREE wireless internet.</li>
+    <li>Green tea bags.</li>
+    <li>Raw sugar.</li>
+    <li>A fan and A/C so I can choose.</li>
+    <li>Control over the AC, arctic temperatures just aren’t enjoyable for me. I like to feel the heat.</li>
+    <li>More electrical sockets to plug stuff into.</li>
+    <li>Windows that open slightly.</li>
+    <li>Hot showers that don’t drip.</li>
+    <li>TV that hasmore than just 500 news channels.</li>
+    <li>An iron.</li>
+    <li>A hairdryer.</li>
+    <li>FREE wireless internet.</li>
+    <li>Value for money mini-bar and room service.</li>
+    <li>A book in the room with information about the hotel and area.</li>
+    <li>Comfy bed with lots of pillows.</li>
+    <li>A decent brand of soap and cleansers.</li>
+</ul>
+</p>
+<form method="post" th:action="@{/logout}">
+    <button>Sign Out</button>
+</form>
+<a th:href="@{/}">home page</a>
+</body>
+</html>
