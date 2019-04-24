@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Security</title>
+    <title>Diary</title>
 </head>
 <body>
-<h2>Welcome, <u><span th:text="${principal.name}">Username</span></u></h2>
-<p>This is the user page</p>
+<!--<h2>Welcome, <u><span th:text="${principal.name}">Username</span></u></h2>-->
 
+<div th:if="${trident.status == false}">
+    <form method="post" th:action="@{/diary}">
+        <button>Destroy the Trident</button>
+    </form>
+</div>
 
-<p th:if="${trident.status == false}">
-<form method="post" th:action="@{/diary}">
-    <input name="id" th:value="${trident.status}" type="hidden"/>
-    <button type="submit">destroys the Trident</button>
-</form>
-</p>
-<p th:if="${trident.status == true}">the Flying Dutchman from its curse released!</p>
-
+<p th:if="${trident.status == true}">The Flying Dutchman is released from its curse!</p>
 
 <form method="post" th:action="@{/logout}">
     <button>Sign Out</button>
