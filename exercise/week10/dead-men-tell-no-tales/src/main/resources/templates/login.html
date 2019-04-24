@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <title>Welcome to Jack Sparrow Page</title>
 </head>
 <body>
 <!--<p th:if="${trident.status}">cursed released!</p>-->
 <p th:if="${param.logout}">You have been logged out</p>
 <p th:if="${param.error}">There was an error, please try again</p>
-<h2>Login with Username and Password</h2>
+
+<h2>login as Jack Sparrow to can talk to Carina</h2>
 <form method="post" th:action="@{/login}">
     <fieldset>
         <input autofocus="autofocus" name="username" placeholder="Username" type="text" value=""/>
@@ -15,5 +16,6 @@
     </fieldset>
     <button>Login</button>
 </form>
+
 </body>
 </html>
