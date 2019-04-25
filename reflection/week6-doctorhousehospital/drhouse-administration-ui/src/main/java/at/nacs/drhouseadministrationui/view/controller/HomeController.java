@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/")
 @RequiredArgsConstructor
-public class SubmittionController {
+public class HomeController {
 
   private final PatientClient client;
 
@@ -26,7 +26,7 @@ public class SubmittionController {
 
   @GetMapping
   String page() {
-    return "patient-submission";
+    return "home";
   }
 
   @PostMapping

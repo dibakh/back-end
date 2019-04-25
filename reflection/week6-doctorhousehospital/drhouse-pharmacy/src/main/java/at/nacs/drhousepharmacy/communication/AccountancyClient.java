@@ -16,9 +16,7 @@ public class AccountancyClient {
     @Value("${patient.url}")
     private String url;
 
-
-    public Patient calculateCosts(Patient patient) {
-        restTemplate.postForObject(url, patient, Patient.class);
-        return patient;
+    public void send(Patient patient) {
+        restTemplate.postForObject(url, patient, void.class);
     }
 }

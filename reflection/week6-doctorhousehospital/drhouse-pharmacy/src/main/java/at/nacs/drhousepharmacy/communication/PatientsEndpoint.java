@@ -12,14 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/patients")
 @RequiredArgsConstructor
-public class PatientEndpoint {
+public class PatientsEndpoint {
 
-    private final PharmacyManager manager;
+  private final PharmacyManager manager;
 
-    @PostMapping
-    public Patient diagnose(@RequestBody Patient patient) {
-
-            return manager.register(patient);
-    }
+  @PostMapping
+  public void diagnose(@RequestBody Patient patient) {
+    manager.register(patient);
+  }
 }
 

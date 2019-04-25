@@ -6,24 +6,20 @@
     <link media="all" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
 </head>
 <body>
-<div class=".center">
-
 <h1>Welcome to the Doctor House Hospital</h1>
-
 <br/><br/>
 <h3>Please fill the from and submit it !</h3>
 <form method="post" th:action="@{/}" th:object="${patient}">
     <label>Name </label>
-    <input th:field="*{name}" type="name"/>
-    <p th:errors="*{name}" th:if="${#fields.hasErrors('name')}">Incorrect input</p>
+    <input th:field="*{name}" type="text"/>
+    <p th:errors="*{name}" th:if="${#fields.hasErrors('name')}">name can not be empty!</p>
     <br/>
     <label>Symptoms</label>
-    <input th:field="*{symptoms}" type="symptoms"/>
-    <p th:errors="*{symptoms}" th:if="${#fields.hasErrors('symptoms')}">Incorrect input</p>
+    <input th:field="*{symptoms}" type="text"/>
+    <p th:errors="*{symptoms}" th:if="${#fields.hasErrors('symptoms')}">name can not be empty!</p>
     <br/><br/>
     <button type="submit">submit</button>
 </form>
-
-</div>
+<a th:href="@{/invoices}">Go to the invoices page</a>
 </body>
 </html>
