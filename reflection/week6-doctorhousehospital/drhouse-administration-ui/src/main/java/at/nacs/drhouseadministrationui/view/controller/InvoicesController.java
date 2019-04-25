@@ -25,8 +25,8 @@ public class InvoicesController {
     return "invoices";
   }
 
-  @PostMapping()
-  String markAsDone(@RequestParam String id) {
+  @PostMapping("/paid")
+  String markAsDone(@RequestParam Long id) {
     client.markAsPaid(id);
     return "redirect:/invoices";
   }

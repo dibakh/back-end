@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/patients")
 @RequiredArgsConstructor
+@RequestMapping("/patients")
 public class PatientEndpoint {
 
     private final DoctorHouse doctorHouse;
 
     @PostMapping
-    public Patient diagnose(@RequestBody Patient patient) {
-        return doctorHouse.getDiagnosis(patient);
+    public void diagnose(@RequestBody Patient patient) {
+        doctorHouse.diagnose(patient);
     }
 }

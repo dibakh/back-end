@@ -16,8 +16,8 @@ public class PatientsEndpoint {
     private final CureManager manager;
 
     @PostMapping
-    public Patient postPatient(@RequestBody Patient patient) {
-        return manager.register(patient);
+    public void postPatient(@RequestBody Patient patient) {
+        manager.register(patient);
     }
 }
 

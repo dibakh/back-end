@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,15 +16,17 @@ public class InvoiceClient {
   private final RestTemplate restTemplate;
 
   @Value("${invoices.url}")
-  private String url;
+  private String invoicesUrl;
+
+  @Value("${invoices.paid.url}")
+  private String paidUrl;
 
   public List<Invoice> getAll() {
-    Invoice[] invoices = restTemplate.getForObject(url, Invoice[].class);
+    Invoice[] invoices = restTemplate.getForObject(invoicesUrl, Invoice[].class);
     return Arrays.asList(invoices);
   }
 
-  public void markAsPaid(String id) {
-    url = url + "/" + id + "/paid";
-    restTemplate.put(url, void.class);
+  public void markAsPaid(Long id) {
+    restTemplate.put(paidUrl, null, Map.of("id", id));
   }
 }

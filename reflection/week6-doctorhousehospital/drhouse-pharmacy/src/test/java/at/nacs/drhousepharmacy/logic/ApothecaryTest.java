@@ -1,6 +1,6 @@
 package at.nacs.drhousepharmacy.logic;
 
-import at.nacs.drhousepharmacy.Communication.AccountancyClient;
+import at.nacs.drhousepharmacy.communication.AccountancyClient;
 import at.nacs.drhousepharmacy.persistance.Patient;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

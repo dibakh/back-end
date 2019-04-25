@@ -1,6 +1,6 @@
 package at.nacs.drhousepharmacy.logic;
 
-import at.nacs.drhousepharmacy.Communication.AccountancyClient;
+import at.nacs.drhousepharmacy.communication.AccountancyClient;
 import at.nacs.drhousepharmacy.configuration.PharmacyRepository;
 import at.nacs.drhousepharmacy.persistance.Patient;
 import lombok.RequiredArgsConstructor;
@@ -10,15 +10,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PharmacyManager {
 
-    private final Apothecary apothecary;
-    private final PharmacyRepository repository;
-    private final AccountancyClient client;
+  private final Apothecary apothecary;
+  private final PharmacyRepository repository;
+  private final AccountancyClient accountancyClient;
 
-    public Patient register(Patient patient) {
-        patient = apothecary.getMedicine(patient);
-        repository.save(patient);
-        client.calculateCosts(patient);
-        return patient;
-    }
+  public void register(Patient patient) {
+    patient = apothecary.getMedicine(patient);
+    repository.save(patient);
+    accountancyClient.send(patient);
+  }
 }
 

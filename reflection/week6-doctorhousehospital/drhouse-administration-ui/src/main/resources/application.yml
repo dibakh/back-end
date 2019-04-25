@@ -1,8 +1,8 @@
 server:
   port: 9000
-
 admission:
   url: http://localhost:9001/patients
-
 invoices:
-  url: http://localhost:9001/invoices
+  url: http://localhost:9005/invoices
+  paid:
+    url: ${invoices.url}/{id}/paid

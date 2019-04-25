@@ -15,7 +15,7 @@ public class PatientClient {
   @Value("${admission.url}")
   private String url;
 
-  public Patient save(Patient patient) {
-    return restTemplate.postForObject(url, patient, Patient.class);
+  public void save(Patient patient) {
+    restTemplate.postForObject(url, patient, Void.class);
   }
 }

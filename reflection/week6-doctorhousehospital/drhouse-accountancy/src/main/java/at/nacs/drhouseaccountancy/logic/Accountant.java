@@ -1,7 +1,8 @@
 package at.nacs.drhouseaccountancy.logic;
 
 import at.nacs.drhouseaccountancy.communication.dto.PatientDTO;
-import at.nacs.drhouseaccountancy.domain.Invoice;
+import at.nacs.drhouseaccountancy.persistance.domain.Invoice;
+import at.nacs.drhouseaccountancy.persistance.domain.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,10 @@ public class Accountant {
   private final InvoiceManager invoiceManager;
   private final InvoiceIssuer invoiceIssuer;
 
-  public PatientDTO invoice(PatientDTO patientDTO) {
-
-    patientManager.saveOrUpdate(patientDTO);
-    Invoice invoice = invoiceIssuer.generateInvoice(patientDTO);
+  public void invoice(PatientDTO patientDTO) {
+    Patient patient = patientManager.createOrUpdate(patientDTO);
+    Invoice invoice = invoiceIssuer.generateInvoice(patientDTO, patient);
     invoiceManager.save(invoice);
-
-    return patientDTO;
   }
 }
 

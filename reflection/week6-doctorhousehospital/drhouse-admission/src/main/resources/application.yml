@@ -2,5 +2,4 @@ server:
   port: 9001
 
 patients:
-  server:
-    url: http://localhost:9002/patients
+  url: http://localhost:9002/patients

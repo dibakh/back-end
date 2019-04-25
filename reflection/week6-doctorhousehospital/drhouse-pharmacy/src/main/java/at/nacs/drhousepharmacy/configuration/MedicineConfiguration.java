@@ -14,12 +14,12 @@ import java.util.Map;
 @ConfigurationProperties("apothecary")
 public class MedicineConfiguration {
 
-    @Getter
-    @Setter
-    private Map<String, String> medicines;
+  @Getter
+  @Setter
+  private Map<String, String> medicines;
 
-    @Bean
-    Map<String , String> medicines(){
-        return medicines;
-    }
+  @Bean
+  Map<String, String> medicines() {
+    return medicines;
+  }
 }

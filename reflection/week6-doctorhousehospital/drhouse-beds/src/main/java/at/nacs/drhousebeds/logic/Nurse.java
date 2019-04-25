@@ -20,7 +20,6 @@ public class Nurse {
         String treatment = getTreatment(patient);
         patient = setTreatment(patient, treatment);
         return patient;
-
     }
 
     private String getTreatment(Patient patient) {

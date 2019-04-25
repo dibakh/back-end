@@ -1,8 +1,9 @@
 package at.nacs.drhouseaccountancy.logic;
 
 import at.nacs.drhouseaccountancy.communication.dto.PatientDTO;
-import at.nacs.drhouseaccountancy.domain.Invoice;
-import at.nacs.drhouseaccountancy.domain.Kind;
+import at.nacs.drhouseaccountancy.persistance.domain.Invoice;
+import at.nacs.drhouseaccountancy.persistance.domain.Kind;
+import at.nacs.drhouseaccountancy.persistance.domain.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,51 +16,43 @@ public class InvoiceIssuer {
 
   private final Map<String, Double> treatmentPrices;
   private final Map<String, Double> medicinePrices;
-  private PatientDTO patientDTO; // is that ok?
 
-  public Invoice generateInvoice(PatientDTO patientDTO) {
+  public Invoice generateInvoice(PatientDTO patientDTO, Patient patient) {
     return Invoice.builder()
-                  .id(getId())
-                  .kind(getKind())
-                  .cost(getCost())
+                  .patient(patient)
+                  .kind(getKind(patientDTO))
+                  .cost(getCost(patientDTO))
                   .diagnosis(patientDTO.getDiagnosis())
                   .paid(false)
-                  .provided(getProvided())
+                  .provided(getProvided(patientDTO))
                   .symptoms(patientDTO.getSymptoms())
                   .timestamp(LocalDateTime.now())
                   .build();
   }
 
-  private Long getId() {
-    return Long.valueOf(patientDTO.getId());
-  }
-
-  private Kind getKind() {
-    if (anyMedicinePrescribed()) {
+  private Kind getKind(PatientDTO patientDTO) {
+    if (anyMedicinePrescribed(patientDTO)) {
       return Kind.MEDICINE;
     }
     return Kind.TREATMENT;
   }
 
-  private double getCost() {
-    if (anyMedicinePrescribed()) {
-      return medicinePrices.get(getMedicine());
+  private double getCost(PatientDTO patientDTO) {
+    if (anyMedicinePrescribed(patientDTO)) {
+      return medicinePrices.getOrDefault(patientDTO.getMedicine(), 25.0);
     }
-    return treatmentPrices.get(getMedicine());
+    return treatmentPrices.getOrDefault(patientDTO.getTreatment(), 25.0);
   }
 
-  private String getProvided() {
-    if (anyMedicinePrescribed()) {
+  private String getProvided(PatientDTO patientDTO) {
+    if (anyMedicinePrescribed(patientDTO)) {
       return patientDTO.getMedicine();
     }
     return patientDTO.getTreatment();
   }
 
-  private boolean anyMedicinePrescribed() {
-    return getMedicine().isBlank();
+  private boolean anyMedicinePrescribed(PatientDTO patientDTO) {
+    return patientDTO.getMedicine().isBlank();
   }
 
-  private String getMedicine() {
-    return patientDTO.getMedicine();
-  }
 }

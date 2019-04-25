@@ -1,3 +1,19 @@
 server:
   port: 9002
 
+patient:
+  diagnoses:
+    Bursting appendix: operation
+    common Cold: Mefenamic
+    Pneumonia: antibiotics
+    lupus: Aspirin
+  treatment:
+    operation: bed
+    Mefenamic: pharmacy
+    antibiotics: pharmacy
+    Aspirin: pharmacy
+
+bed:
+  url: http://localhost:9003/patients
+pharmacy:
+  url: http://localhost:9004/patients

@@ -1,6 +1,6 @@
-package at.nacs.drhousebeds.communication;
+package at.nacs.drhousediagnoses.communication;
 
-import at.nacs.drhousebeds.persistence.Patient;
+import at.nacs.drhousediagnoses.persistance.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,14 +8,14 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequiredArgsConstructor
-public class AccountancyClient {
+public class BedClient {
 
   private final RestTemplate restTemplate;
 
-  @Value("${patient.url}")
+  @Value("${bed.url}")
   private String url;
 
-  public void post(Patient patient) {
-    restTemplate.postForObject(url + "/patients", patient, void.class);
+  public void forward(Patient patient) {
+    restTemplate.postForObject(url, patient, void.class);
   }
 }

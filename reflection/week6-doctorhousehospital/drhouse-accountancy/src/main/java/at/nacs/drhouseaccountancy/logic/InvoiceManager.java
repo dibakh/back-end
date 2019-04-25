@@ -1,12 +1,13 @@
 package at.nacs.drhouseaccountancy.logic;
 
-import at.nacs.drhouseaccountancy.domain.Invoice;
-import at.nacs.drhouseaccountancy.persistance.InvoiceRepository;
+import at.nacs.drhouseaccountancy.persistance.domain.Invoice;
+import at.nacs.drhouseaccountancy.persistance.repository.InvoiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 @Service
 @RequiredArgsConstructor
@@ -24,12 +25,13 @@ public class InvoiceManager {
 
   public void markAsPaidInvoice(Long id) {
     Optional<Invoice> patientInvoice = repository.findById(id);
-    if (!patientInvoice.isPresent()) {
-      // how tell user that id is not valid?
-
-    }
-    Invoice invoice = patientInvoice.get();
+    Invoice invoice = patientInvoice.orElseThrow(displayException(id));
     invoice.setPaid(true);
     repository.save(invoice);
   }
+
+  private Supplier<IllegalArgumentException> displayException(Long id) {
+    return () -> new IllegalArgumentException("There is no patient registered with the id :" + id);
+  }
 }
+

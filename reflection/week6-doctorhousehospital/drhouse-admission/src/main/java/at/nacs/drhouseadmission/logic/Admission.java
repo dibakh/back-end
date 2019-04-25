@@ -1,6 +1,6 @@
 package at.nacs.drhouseadmission.logic;
 
-import at.nacs.drhouseadmission.logic.DiagnosesClient;
+import at.nacs.drhouseadmission.communication.DiagnosesClient;
 import at.nacs.drhouseadmission.persistance.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,11 +11,10 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class Admission {
 
-    private final DiagnosesClient client;
+  private final DiagnosesClient client;
 
-    public Patient admit(Patient patient) {
-        patient.setId(UUID.randomUUID().toString());
-        client.forward(patient);
-        return patient;
-    }
+  public void admit(Patient patient) {
+    patient.setId(UUID.randomUUID().toString());
+    client.forward(patient);
+  }
 }

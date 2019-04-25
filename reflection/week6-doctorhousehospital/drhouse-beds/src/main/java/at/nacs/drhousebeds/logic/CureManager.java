@@ -10,14 +10,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CureManager {
 
-    private final Nurse nurse;
-    private final BedRepository repository;
-    private final AccountancyClient client;
+  private final Nurse nurse;
+  private final BedRepository repository;
+  private final AccountancyClient client;
 
-    public Patient register(Patient patient) {
-        patient = nurse.provideTreatment(patient);
-        repository.save(patient);
-        client.post(patient);
-        return patient;
-    }
+  public void register(Patient patient) {
+    patient = nurse.provideTreatment(patient);
+    repository.save(patient);
+    client.post(patient);
+  }
 }

@@ -1,4 +1,4 @@
-package at.nacs.drhousepharmacy.Communication;
+package at.nacs.drhousepharmacy.communication;
 
 import at.nacs.drhousepharmacy.persistance.Patient;
 import lombok.RequiredArgsConstructor;
