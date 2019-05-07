@@ -24,9 +24,9 @@ public class DoctorHouse {
   public void diagnose(Patient patient) {
 
     String symptoms = patient.getSymptoms();
-    String section = diagnoses.getOrDefault(symptoms, "pharmacy");
-    patient.setDiagnosis(section);
-    if (section.equals("bed")) {
+    String diagnosis = diagnoses.getOrDefault(symptoms, "lupus");
+    patient.setDiagnosis(diagnosis);
+    if (diagnosis.equals("bed")) {
       bedClient.forward(patient);
     } else {
       pharmacyClient.forward(patient);
