@@ -18,18 +18,13 @@ public class DoctorHouse {
   @Setter
   private Map<String, String> diagnoses;
 
-  private final PharmacyClient pharmacyClient;
-  private final BedClient bedClient;
+  private final Section section;
 
   public void diagnose(Patient patient) {
 
     String symptoms = patient.getSymptoms();
     String diagnosis = diagnoses.getOrDefault(symptoms, "lupus");
     patient.setDiagnosis(diagnosis);
-    if (diagnosis.equals("bed")) {
-      bedClient.forward(patient);
-    } else {
-      pharmacyClient.forward(patient);
-    }
+    section.refer(patient);
   }
 }
