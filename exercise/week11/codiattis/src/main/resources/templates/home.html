@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+
+<form method="post" th:action="@{/logout}">
+    <button>Sign Out</button>
+</form>
+
+<h1>The Codiatti Secret Order</h1>
+<h3>Welcome <span th:text="${loggedUserName}">Lidia</span></h3>
+
+<h2>List of all members</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Authorities</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">1</td>
+        <td th:text="${user.name}">Mr. Pepe</td>
+        <td th:text="${user.username}">Pepe</td>
+        <td th:text="${user.password}">lalala</td>
+        <td th:text="${user.authorities}">user</td>
+    </tr>
+</table>
+
+<!--<th:block th:if="${isAdmin}">-->
+    <h2>Add new member</h2>
+    <form method="post" th:action="@{/}" th:object="${user}">
+        <label>Name</label><br/>
+        <input autofocus="autofocus" th:field="*{name}" type="text"/><br/>
+        <label>Username</label><br/>
+        <input required="required" th:field="*{username}" type="text"/><br/>
+        <label>Password</label><br/>
+        <input required="required" th:field="*{password}" type="password"/><br/>
+        <button>Create</button>
+
+        <br/><br/>
+        <p th:errors="*{all}" th:if="${#fields.hasErrors('all')}">Incorrect date</p>
+    </form>
+<!--</th:block>-->
+
+</body>
+</html>
