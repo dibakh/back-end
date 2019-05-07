@@ -1,5 +1,6 @@
 package at.nacs.drhouseadmission.communication;
 
+import at.nacs.drhouseadmission.logic.Admission;
 import at.nacs.drhouseadmission.logic.AdmissionManager;
 import at.nacs.drhouseadmission.persistance.Patient;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,8 +27,11 @@ class PatientsEndpointTest {
   @MockBean
   DiagnosesClient client;
 
+  @MockBean
+  Admission admission;
+
   @SpyBean
-  AdmissionManager admissionManager;
+  AdmissionManager manager;
 
   String url = "/patients";
 
@@ -41,8 +45,8 @@ class PatientsEndpointTest {
 
     restTemplate.postForObject(url, patient, Patient.class);
 
-    assertThat(patient.getId().isBlank());
+    assertThat(patient.getId()).isNull();
 
-    Mockito.verify(admissionManager).admit(patient);
+    Mockito.verify(manager).admit(patient);
   }
 }
