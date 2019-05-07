@@ -1,11 +1,13 @@
 package at.nacs.drhouseadmission.communication;
 
+import at.nacs.drhouseadmission.logic.Admission;
 import at.nacs.drhouseadmission.persistance.Patient;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,10 +21,10 @@ class PatientsEndpointTest {
     TestRestTemplate testRestTemplate;
 
     @MockBean
-    RestTemplate restTemplate;
+    DiagnosesClient client;
 
-    @MockBean
-    DiagnosesClient diagnosesClient;
+    @SpyBean
+    Admission  admission;
 
     @Autowired
     Patient patient;
