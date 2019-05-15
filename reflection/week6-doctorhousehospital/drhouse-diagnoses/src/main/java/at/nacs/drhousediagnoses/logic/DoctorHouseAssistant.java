@@ -28,5 +28,8 @@ public class DoctorHouseAssistant {
       bedClient.forward(patient);
     }
     pharmacyClient.forward(patient);
+
   }
 }
+//TODO: check logic with L
+
