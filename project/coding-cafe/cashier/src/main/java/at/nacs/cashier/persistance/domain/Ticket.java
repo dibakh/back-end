@@ -1,4 +1,4 @@
-package at.nacs.cashier;
+package at.nacs.cashier.persistance.domain;
 
 
 import lombok.Builder;
@@ -9,7 +9,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -23,7 +22,7 @@ public class Ticket {
 
 
   @Column(unique = true)
-  private UUID uuid;
+  private String uuid;
 
 
   @OneToMany

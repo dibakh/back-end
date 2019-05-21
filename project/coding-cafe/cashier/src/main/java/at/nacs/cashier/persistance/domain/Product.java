@@ -1,4 +1,4 @@
-package at.nacs.cashier;
+package at.nacs.cashier.persistance.domain;
 
 
 import lombok.AllArgsConstructor;

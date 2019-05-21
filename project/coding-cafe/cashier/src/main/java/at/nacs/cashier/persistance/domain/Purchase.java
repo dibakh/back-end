@@ -1,16 +1,15 @@
-package at.nacs.cashier;
+package at.nacs.cashier.persistance.domain;
 
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
 @Data
 public class Purchase {
 
-  private UUID uuid;
+  private String uuid;
 
   private List<String> products = new ArrayList<>();
 
