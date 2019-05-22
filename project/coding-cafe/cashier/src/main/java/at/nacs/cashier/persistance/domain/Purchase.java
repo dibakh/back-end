@@ -10,7 +10,5 @@ import java.util.List;
 public class Purchase {
 
   private String uuid;
-
-  private List<String> products = new ArrayList<>();
-
+  private List<String> items = new ArrayList<>();
 }

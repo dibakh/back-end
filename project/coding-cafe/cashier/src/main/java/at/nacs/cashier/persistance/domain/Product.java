@@ -18,7 +18,6 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class Product {
 
-
   @Id
   @GeneratedValue
   private Long id;
@@ -27,6 +26,4 @@ public class Product {
   private String name;
 
   private Double price;
-
-
 }

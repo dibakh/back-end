@@ -15,15 +15,12 @@ import java.util.List;
 @Builder
 public class Ticket {
 
-
   @Id
   @GeneratedValue
   private Long id;
 
-
   @Column(unique = true)
   private String uuid;
-
 
   @OneToMany
   @LazyCollection(LazyCollectionOption.FALSE)
@@ -31,5 +28,4 @@ public class Ticket {
   private List<Product> products = new ArrayList<>();
 
   private Double total;
-
 }
