@@ -13,5 +13,4 @@ public class PurchaseIssuer {
     purchase.setUuid(UUID.randomUUID().toString());
     return purchase;
   }
-
 }

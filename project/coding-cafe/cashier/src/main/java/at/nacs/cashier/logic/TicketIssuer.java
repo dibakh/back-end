@@ -16,8 +16,10 @@ import java.util.stream.Collectors;
 public class TicketIssuer {
 
   private final Map<String, Double> priceList;
+  private final PurchaseIssuer purchaseIssuer;
 
   public Ticket createTicket(Purchase purchase) {
+    purchase = purchaseIssuer.issue(purchase);
     return Ticket.builder()
                  .uuid(purchase.getUuid())
                  .products(products(purchase))
@@ -26,14 +28,14 @@ public class TicketIssuer {
   }
 
   private Double getTotal(Purchase purchase) {
-    long total = purchase.getProducts().stream()
+    long total = purchase.getItems().stream()
                          .map(e -> priceList.get(e))
                          .count();
     return Double.valueOf(total);
   }
 
   private List<Product> products(Purchase purchase) {
-    List<String> products = purchase.getProducts();
+    List<String> products = purchase.getItems();
     return products.stream()
                    .map(e -> getProduct(e))
                    .collect(Collectors.toList());
