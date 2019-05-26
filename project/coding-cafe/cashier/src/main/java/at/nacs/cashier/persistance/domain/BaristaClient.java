@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient("barista")
 public interface BaristaClient {
 
-  @PostMapping("/barista")
+  @PostMapping("/orders")
   void post(Order order);
 }

@@ -18,8 +18,8 @@ public class TicketIssuer {
   private final Map<String, Double> priceList;
   private final PurchaseIssuer purchaseIssuer;
 
-  public Ticket createTicket(Purchase purchase) {
-    purchase = purchaseIssuer.issue(purchase);
+  public Ticket createTicket(List<String> items) {
+    Purchase purchase = purchaseIssuer.issue(items);
     return Ticket.builder()
                  .uuid(purchase.getUuid())
                  .products(products(purchase))

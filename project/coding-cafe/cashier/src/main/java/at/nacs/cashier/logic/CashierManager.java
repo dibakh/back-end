@@ -14,6 +14,12 @@ public class CashierManager {
 
   private final OrderIssuer orderIssuer;
   private final BaristaClient baristaClient;
+  private final PurchaseIssuer purchaseIssuer;
+
+  public void manage(List<String> items) {
+    Purchase purchase = purchaseIssuer.issue(items);
+    sendEachOrder(purchase);
+  }
 
   public void sendEachOrder(Purchase purchase) {
     String uuid = purchase.getUuid();

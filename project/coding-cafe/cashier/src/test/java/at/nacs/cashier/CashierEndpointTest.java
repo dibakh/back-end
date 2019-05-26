@@ -1,14 +1,15 @@
 package at.nacs.cashier;
 
-import at.nacs.cashier.persistance.domain.BaristaClient;
-import at.nacs.cashier.persistance.domain.Purchase;
+import at.nacs.cashier.logic.CashierManager;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
+import java.util.List;
+
+import static org.mockito.Mockito.verify;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -18,18 +19,16 @@ class CashierEndpointTest {
   TestRestTemplate restTemplate;
 
   @MockBean
-  BaristaClient baristaClient;
-
-  String url = "/barista";
+  CashierManager cashierManager;
 
 
-  @Autowired
-  Purchase purchase;
+  String url = "/items";
+
+  List<String> items = List.of("capuccino", "espresso");
 
   @Test
-  void get() {
-    restTemplate.postForObject(url, purchase, Void.class);
-    //   verify(messagesClient).getMessage();
-    Mockito.verify(baristaClient).post();
+  void post() {
+    restTemplate.postForObject(url, items, Void.class);
+    verify(cashierManager).manage(items);
   }
 }
